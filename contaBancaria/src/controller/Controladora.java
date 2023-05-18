@@ -42,16 +42,16 @@ public class Controladora {
                 case 1:
 
                     double verificarSaldo = conta.getSaldo();
-                    if (verificarSaldo < -999) {
+                    if (verificarSaldo==0)  {
                         EntradaSaida.saldoNegativo();
                         break;
                     }
 
                     String sacar = "Saque";
                     valor = EntradaSaida.solicitarInformacoesSaque();
-                    while (valor <= 0) {
+                    if ((valor <= 0) ||(verificarSaldo + 1000 < valor)){
                         EntradaSaida.msgErro();
-                        valor = EntradaSaida.solicitarInformacoesSaque();
+                        break;
                     }
                     this.conta.sacar(valor);
 
